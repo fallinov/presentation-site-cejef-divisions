@@ -1,0 +1,584 @@
+/* ============================================
+   SFA-PRESENTATION — Styles communs
+   v2 — Améliorations UX & accessibilité
+   ============================================ */
+
+/* --- Base --- */
+html { scroll-behavior: smooth; }
+html, body { margin: 0; height: 100vh; }
+body { overflow: hidden; font-family: 'Inter', system-ui, sans-serif; }
+
+/* --- Système de slides (mode toggle, défaut) --- */
+.slide {
+  display: none;
+  position: relative;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  /* Forcer l'alignement en haut — le centrage est géré par margin auto sur les enfants */
+  align-items: flex-start !important;
+}
+.slide::-webkit-scrollbar { display: none; /* Chrome/Safari */ }
+/* Centrage vertical via margin auto — centre quand il y a de la place, top-align quand ça déborde */
+.slide > * { margin-top: auto; margin-bottom: auto; }
+.slide.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Scroll mode : toutes les slides visibles, scroll vertical */
+body[data-nav="scroll"] { overflow-y: auto; scroll-snap-type: y mandatory; }
+body[data-nav="scroll"] .slide { display: flex; }
+body[data-nav="scroll"] .slide-scaler {
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+
+/* Transition entre slides (mode toggle) */
+.slide.slide-enter {
+  animation: slideEnter 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes slideEnter {
+  from { opacity: 0; transform: translateX(16px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* --- Skip link (accessibilité WCAG) --- */
+.skip-link {
+  position: fixed;
+  top: -100%;
+  left: 1rem;
+  z-index: 200;
+  padding: 0.75rem 1.25rem;
+  background: #000;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0 0 0.5rem 0.5rem;
+  text-decoration: none;
+  transition: top 0.2s ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* --- Focus visible global (WCAG 2.4.7) --- */
+:focus-visible {
+  outline: 3px solid var(--color-accent, #3b82f6);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Pas d'outline au clic souris */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* --- ARIA live region (invisible, pour lecteurs d'écran) --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Navigation dots --- */
+#dots {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  background: rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 0.5rem 0.35rem;
+  border-radius: 9999px;
+}
+.nav-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: rgba(255,255,255,0.35);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.nav-dot:hover {
+  background: rgba(255,255,255,0.65);
+}
+.nav-dot.active {
+  width: 0.6rem;
+  height: 0.6rem;
+  background: var(--color-accent, #3b82f6);
+  box-shadow: 0 0 6px var(--color-accent, rgba(59,130,246,0.6));
+}
+.nav-dot:focus-visible {
+  outline: 2px solid var(--color-accent, #3b82f6);
+  outline-offset: 2px;
+}
+
+/* --- Barre de progression (auto-créée) --- */
+.slide-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  z-index: 100;
+}
+.slide-progress-bar {
+  height: 100%;
+  background: var(--color-accent, #3b82f6);
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --- Boutons prev/next (auto-créés) --- */
+.slide-nav {
+  position: fixed;
+  bottom: 1.25rem;
+  right: 1.25rem;
+  z-index: 90;
+  display: flex;
+  gap: 0.5rem;
+}
+.slide-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.slide-nav-btn:hover {
+  background: rgba(255,255,255,0.16);
+  color: rgba(255,255,255,0.9);
+}
+.slide-nav-btn:active {
+  transform: scale(0.92);
+}
+
+/* --- Compteur de slides (auto-créé) --- */
+.slide-counter {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.25rem;
+  z-index: 90;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.35);
+}
+
+/* --- Animations --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.animate-fade-in-left { animation: fadeInLeft 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.animate-fade-in-scale { animation: fadeInScale 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+.animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
+
+.delay-100 { animation-delay: 0.1s; opacity: 0; }
+.delay-200 { animation-delay: 0.2s; opacity: 0; }
+.delay-300 { animation-delay: 0.3s; opacity: 0; }
+.delay-400 { animation-delay: 0.4s; opacity: 0; }
+.delay-500 { animation-delay: 0.5s; opacity: 0; }
+.delay-600 { animation-delay: 0.6s; opacity: 0; }
+
+/* prefers-reduced-motion : désactiver les animations (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  html { scroll-behavior: auto; }
+  .slide.slide-enter { animation: none; opacity: 1; transform: none; }
+}
+
+/* --- Blocs de code --- */
+.code-block {
+  background: #1e1e1e;
+  position: relative;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  color: #cbd5e1;
+  overflow-x: auto;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.code-block pre { margin: 0; color: inherit; }
+.code-block code { color: inherit; white-space: pre; display: block; }
+
+/* Coloration syntaxique — toutes AAA (≥ 7:1) sur #1e1e1e */
+.keyword  { color: #d4a0cf; } /* 7.72:1 — mauve */
+.string   { color: #daa48e; } /* 7.69:1 — orange */
+.function { color: #dcdcaa; } /* 11.80:1 — jaune pâle */
+.comment  { color: #85b86e; font-style: italic; } /* 7.21:1 — vert */
+.tag      { color: #74b3e8; } /* 7.43:1 — bleu */
+.attr     { color: #9cdcfe; } /* 11.18:1 — bleu ciel */
+.value    { color: #daa48e; } /* 7.69:1 — orange */
+.number   { color: #b5cea8; } /* 9.81:1 — vert clair */
+.type     { color: #4ec9b0; } /* 8.18:1 — turquoise */
+.variable { color: #9cdcfe; } /* 11.18:1 — bleu ciel */
+.php-tag  { color: #aaaaaa; } /* 7.18:1 — gris */
+
+/* --- Cartes --- */
+.card-hover { transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1); }
+.card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+/* --- Gradient text --- */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent, #60a5fa) 0%, var(--color-accent-alt, #a78bfa) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Glow --- */
+.glow { box-shadow: 0 0 40px rgba(59, 130, 246, 0.15); }
+
+/* --- Bouton copier (blocs de code) --- */
+.copy-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.35rem 0.7rem;
+  min-height: 32px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 0.375rem;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.copy-btn:hover { background: rgba(255,255,255,0.16); color: #e2e8f0; }
+.copy-btn.copied { background: rgba(34,197,94,0.2); border-color: rgba(34,197,94,0.4); color: #4ade80; }
+
+/* --- Indicateur contraste --- */
+#contrast-indicator,
+#contrast-badge {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  background: #000;
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* --- Raccourcis clavier hint --- */
+.keyboard-hint {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 90;
+  display: flex;
+  gap: 0.35rem;
+  opacity: 0;
+  animation: hintAppear 0.5s 2s forwards;
+}
+.keyboard-hint kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.3rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 4px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.3);
+}
+@keyframes hintAppear {
+  to { opacity: 1; }
+}
+/* Masquer le hint après la première interaction */
+body.has-navigated .keyboard-hint { opacity: 0 !important; transition: opacity 0.3s ease; }
+
+/* --- Print / export --- */
+@media print {
+  body { overflow: visible !important; }
+  .slide { display: flex !important; min-height: 100vh; page-break-after: always; break-after: page; }
+  .slide.active { display: flex !important; }
+  #dots, .nav-dot, .slide-progress, .slide-nav, .copy-btn,
+  .keyboard-hint, .slide-counter, .skip-link,
+  #contrast-indicator, #contrast-badge { display: none !important; }
+  [class*="blur"] { filter: none !important; }
+}
+
+/* ============================================
+   Mode contraste élevé (touche C)
+
+   Monochrome strict : noir #000, blanc #FFF,
+   gris #E0E0E0 (secondaire), #CCC (bordures).
+   Fond sombre — optimal pour projection en salle.
+   Aucune couleur d'accent.
+   ============================================ */
+
+/* --- Base --- */
+body.high-contrast {
+  background: #000 !important;
+  color: #fff !important;
+}
+body.high-contrast #contrast-indicator,
+body.high-contrast #contrast-badge {
+  display: block;
+  position: fixed;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  background: #fff !important;
+  color: #000 !important;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  border: 2px solid #fff !important;
+}
+
+/* --- Slides : fond noir uniforme --- */
+body.high-contrast .slide {
+  background: #000 !important;
+  background-image: none !important;
+}
+
+/* --- Tout texte → blanc --- */
+body.high-contrast .slide *:not(.code-block):not(.code-block *) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* --- Texte secondaire (gris clair, 15.3:1 sur noir) --- */
+body.high-contrast .text-slate-400,
+body.high-contrast .text-slate-500,
+body.high-contrast .text-slate-600 {
+  color: #e0e0e0 !important;
+  -webkit-text-fill-color: #e0e0e0 !important;
+}
+
+/* --- Arrière-plans : tout en noir --- */
+body.high-contrast [class*="bg-slate"],
+body.high-contrast [class*="bg-js"],
+body.high-contrast [class*="from-slate"],
+body.high-contrast [class*="from-green"],
+body.high-contrast [class*="from-orange"],
+body.high-contrast [class*="from-amber"],
+body.high-contrast [class*="from-red"],
+body.high-contrast [class*="from-blue"],
+body.high-contrast [class*="from-purple"],
+body.high-contrast [class*="bg-green-500/10"],
+body.high-contrast [class*="bg-orange-500/10"],
+body.high-contrast [class*="bg-red-500/10"],
+body.high-contrast [class*="bg-blue-500/10"],
+body.high-contrast [class*="bg-purple-500/10"],
+body.high-contrast [class*="bg-wp"],
+body.high-contrast [class*="bg-vue"],
+body.high-contrast [class*="from-wp"],
+body.high-contrast [class*="from-vue"],
+body.high-contrast [class*="gradient-"] {
+  background: #000 !important;
+  background-image: none !important;
+}
+
+/* --- Cartes / surfaces surélevées --- */
+body.high-contrast [class*="bg-slate-900/"],
+body.high-contrast [class*="bg-slate-800/"],
+body.high-contrast [class*="bg-white/"],
+body.high-contrast [class*="bg-black/"] {
+  background: #1a1a1a !important;
+}
+body.high-contrast .slide a[class*="rounded"],
+body.high-contrast .slide div[class*="rounded"][class*="border"],
+body.high-contrast .slide div[class*="rounded"][class*="bg-"] {
+  background: #1a1a1a !important;
+  border: 2px solid #ccc !important;
+}
+
+/* --- Bordures : gris visible, 2px minimum --- */
+body.high-contrast [class*="border-green"],
+body.high-contrast [class*="border-orange"],
+body.high-contrast [class*="border-amber"],
+body.high-contrast [class*="border-red"],
+body.high-contrast [class*="border-blue"],
+body.high-contrast [class*="border-purple"],
+body.high-contrast [class*="border-slate"],
+body.high-contrast [class*="border-js"],
+body.high-contrast [class*="border-wp"],
+body.high-contrast [class*="border-vue"] {
+  border-color: #ccc !important;
+}
+
+/* --- Badges / pills : monochrome --- */
+body.high-contrast .bg-green-500,
+body.high-contrast .bg-orange-500,
+body.high-contrast .bg-red-500,
+body.high-contrast .bg-blue-500,
+body.high-contrast .bg-purple-500 {
+  background: #333 !important;
+}
+body.high-contrast [class*="rounded-full"][class*="bg-"] {
+  background: #1a1a1a !important;
+  border: 1px solid #ccc !important;
+}
+
+/* --- Gradient text → blanc, pas de gradient --- */
+body.high-contrast .gradient-text {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: #fff !important;
+  color: #fff !important;
+}
+
+/* --- Tableaux --- */
+body.high-contrast table { border: 2px solid #ccc !important; }
+body.high-contrast table thead { background: #1a1a1a !important; }
+body.high-contrast table th { border-bottom: 2px solid #ccc !important; color: #fff !important; }
+body.high-contrast table td { border-bottom: 1px solid #333 !important; color: #e0e0e0 !important; }
+body.high-contrast table tr { border-color: #333 !important; }
+
+/* --- Liens : blanc souligné (pas de couleur) --- */
+body.high-contrast a {
+  color: #fff !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+/* --- Effets visuels : tout supprimer --- */
+body.high-contrast [class*="blur"] { filter: none !important; -webkit-filter: none !important; }
+body.high-contrast [class*="shadow"] { box-shadow: none !important; }
+body.high-contrast .glow { box-shadow: none !important; }
+body.high-contrast [class*="opacity-"] { opacity: 1 !important; }
+body.high-contrast .animate-pulse-slow { animation: none !important; }
+
+/* --- Dots --- */
+body.high-contrast #dots {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+body.high-contrast .nav-dot {
+  background: #333 !important;
+  border: 2px solid #fff !important;
+  box-shadow: none !important;
+}
+body.high-contrast .nav-dot.active {
+  background: #fff !important;
+  box-shadow: none !important;
+}
+body.high-contrast .nav-dot:focus-visible { outline-color: #fff; }
+
+/* --- Nav prev/next --- */
+body.high-contrast .slide-nav-btn {
+  background: #1a1a1a !important;
+  color: #fff !important;
+  border: 2px solid #ccc !important;
+  backdrop-filter: none !important;
+}
+body.high-contrast .slide-nav-btn:hover {
+  background: #333 !important;
+}
+
+/* --- Progress bar --- */
+body.high-contrast .slide-progress { background: #1a1a1a !important; }
+body.high-contrast .slide-progress-bar { background: #fff !important; }
+
+/* --- Counter --- */
+body.high-contrast .slide-counter { color: #e0e0e0 !important; }
+
+/* --- Keyboard hint --- */
+body.high-contrast .keyboard-hint kbd {
+  background: #1a1a1a !important;
+  border-color: #ccc !important;
+  color: #e0e0e0 !important;
+}
+
+/* --- SVG icons : blanc --- */
+body.high-contrast svg { color: #fff !important; stroke: #fff !important; }
+
+/* --- Images : ne pas toucher --- */
+body.high-contrast img { filter: none !important; }
+
+/* --- Blocs de code — DOIT rester en dernier pour gagner sur .slide * --- */
+body.high-contrast .code-block,
+body.high-contrast .code-block * {
+  background-color: #1a1a1a !important;
+  color: #e0e0e0 !important;
+  -webkit-text-fill-color: #e0e0e0 !important;
+  border-color: #ccc !important;
+}
+body.high-contrast .code-block {
+  border: 2px solid #ccc !important;
+}
+body.high-contrast .code-block .keyword  { color: #d4a0cf !important; -webkit-text-fill-color: #d4a0cf !important; }
+body.high-contrast .code-block .string   { color: #daa48e !important; -webkit-text-fill-color: #daa48e !important; }
+body.high-contrast .code-block .function { color: #dcdcaa !important; -webkit-text-fill-color: #dcdcaa !important; }
+body.high-contrast .code-block .comment  { color: #85b86e !important; -webkit-text-fill-color: #85b86e !important; }
+body.high-contrast .code-block .tag      { color: #74b3e8 !important; -webkit-text-fill-color: #74b3e8 !important; }
+body.high-contrast .code-block .attr     { color: #9cdcfe !important; -webkit-text-fill-color: #9cdcfe !important; }
+body.high-contrast .code-block .value    { color: #daa48e !important; -webkit-text-fill-color: #daa48e !important; }
+body.high-contrast .code-block .number   { color: #b5cea8 !important; -webkit-text-fill-color: #b5cea8 !important; }
+body.high-contrast .code-block .type     { color: #4ec9b0 !important; -webkit-text-fill-color: #4ec9b0 !important; }
+body.high-contrast .code-block .variable { color: #9cdcfe !important; -webkit-text-fill-color: #9cdcfe !important; }
+body.high-contrast .code-block .php-tag  { color: #aaaaaa !important; -webkit-text-fill-color: #aaaaaa !important; }
+body.high-contrast .code-block .copy-btn {
+  background: #333 !important;
+  color: #e0e0e0 !important;
+  -webkit-text-fill-color: #e0e0e0 !important;
+  border-color: #ccc !important;
+}
+
+/* --- Support OS forced-colors --- */
+@media (forced-colors: active) {
+  .code-block { forced-color-adjust: none; border: 2px solid ButtonText; }
+  .slide { forced-color-adjust: auto; }
+}
