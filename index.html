@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Site Web CEJEF &mdash; Pr&eacute;sentation aux divisions</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22%233b82f6%22><circle cx=%2212%22 cy=%2212%22 r=%2210%22/></svg>">
 <script src="libs/tailwind.js"></script>
 <link rel="stylesheet" href="libs/fonts.css">
 <style>
@@ -197,6 +198,16 @@ a.demo-link svg { width: 0.85em; height: 0.85em; shrink: 0; }
   .slide { transition: opacity 0.15s ease; transform: none !important; }
   .slide.active .fade-up { animation: none; opacity: 1; }
 }
+
+/* --- Mobile : grilles passent en une seule colonne sous 640px --- */
+@media (max-width: 640px) {
+  .slide [class*="grid-cols-2"],
+  .slide [class*="grid-cols-3"] {
+    grid-template-columns: 1fr !important;
+  }
+  .slide .text-hero { font-size: clamp(2rem, 9vw, 2.8rem); }
+  .slide .text-title { font-size: clamp(1.5rem, 7vw, 2rem); }
+}
 </style>
 </head>
 <body>
@@ -217,13 +228,15 @@ a.demo-link svg { width: 0.85em; height: 0.85em; shrink: 0; }
 <div class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 p-6 rounded-2xl border border-slate-700/40 glow max-w-3xl mx-auto text-left fade-up d3">
 <p class="text-body text-slate-200 mb-3"><strong class="text-blue-400">Ordre du jour :</strong></p>
 <div class="grid grid-cols-2 gap-x-8 gap-y-1 text-slate-300 text-small">
-<p>1. Concept g&eacute;n&eacute;ral &amp; vision UX</p>
-<p>5. Mod&egrave;les de pages de formation</p>
-<p>2. Qui fait quoi ?</p>
-<p>6. Syst&egrave;me d'inscription</p>
-<p>3. Contenu &agrave; d&eacute;finir ensemble</p>
-<p>7. Vos t&acirc;ches</p>
-<p>4. Contacts &amp; r&eacute;seaux sociaux</p>
+<p>1. P&eacute;rim&egrave;tre prioritaire</p>
+<p>6. Contacts &amp; r&eacute;seaux sociaux</p>
+<p>2. Publics cibles</p>
+<p>7. Mod&egrave;les de pages de formation</p>
+<p>3. Qui fait quoi ?</p>
+<p>8. Syst&egrave;me d'inscription</p>
+<p>4. Pr&eacute;sentation division</p>
+<p>9. Vos t&acirc;ches</p>
+<p>5. Section Campus</p>
 <p></p>
 </div>
 </div>
@@ -238,55 +251,74 @@ a.demo-link svg { width: 0.85em; height: 0.85em; shrink: 0; }
 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
 <span>Centre Num&eacute;rique</span>
 </div>
+<span class="text-slate-700">&bull;</span>
+<span class="text-slate-600 font-mono text-xs">v1.0.0</span>
 </div>
 </div>
 </section>
 
-<!-- ============================== SLIDE 2 : CONCEPT & UX ============================== -->
+<!-- ============================== SLIDE 2 : PÉRIMÈTRE PRIORITAIRE ============================== -->
 <section class="slide" id="s2">
 <div class="content">
-<h2 class="text-title gradient-text text-center mb-6 fade-up">Concept g&eacute;n&eacute;ral &amp; orientation UX</h2>
+<h2 class="text-title gradient-text text-center mb-4 fade-up">P&eacute;rim&egrave;tre prioritaire</h2>
 
-<div class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 p-5 rounded-2xl border border-slate-700/40 glow text-center mb-6 fade-up d1">
-<p class="text-body text-white font-semibold mb-1">Le site est pens&eacute; pour un public externe. <a href="https://2026-cns-sfa-cre-site-cejef.vercel.app/" target="_blank" class="demo-link text-xs font-normal"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>voir la maquette</a></p>
-<p class="text-small text-slate-300">Exp&eacute;rience recentr&eacute;e sur les <strong class="text-blue-400">futurs &eacute;l&egrave;ves</strong> et leurs <strong class="text-blue-400">parents</strong> qui recherchent une formation.</p>
+<div class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 p-4 rounded-2xl border border-slate-700/40 glow text-center mb-4 fade-up d1">
+<p class="text-body text-white font-semibold mb-1">Le site sert un public <strong class="text-blue-400">externe</strong>. <a href="https://2026-cns-sfa-cre-site-cejef.vercel.app/" target="_blank" class="demo-link text-xs font-normal"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>voir la maquette</a></p>
+<p class="text-small text-slate-300">Le p&eacute;rim&egrave;tre se d&eacute;finit aussi par ce que le site <strong class="text-white">n'est pas</strong>.</p>
 </div>
 
-<div class="grid grid-cols-2 gap-5 mb-6 fade-up d2">
-<div class="bg-red-500/8 border border-red-500/25 p-5 rounded-xl">
-<h3 class="text-red-400 font-semibold text-body mb-3 flex items-center gap-2">
-<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-Le site n'est pas&hellip;
-</h3>
-<ul class="space-y-2 text-slate-300 text-small">
-<li class="flex items-center gap-2"><svg class="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg> Un portail interne pour les collaborateurs</li>
-<li class="flex items-center gap-2"><svg class="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg> Un portail pour les &eacute;l&egrave;ves inscrits</li>
-<li class="flex items-center gap-2"><svg class="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg> Une vitrine institutionnelle exhaustive</li>
-</ul>
-</div>
-<div class="bg-green-500/8 border border-green-500/25 p-5 rounded-xl">
-<h3 class="text-green-400 font-semibold text-body mb-3 flex items-center gap-2">
+<div class="grid grid-cols-2 gap-4 mb-4 fade-up d2">
+<div class="bg-green-500/8 border border-green-500/25 p-4 rounded-xl">
+<h3 class="text-green-400 font-semibold text-body mb-2 flex items-center gap-2">
 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
 Le site se concentre sur&hellip;
 </h3>
-<ul class="space-y-2 text-slate-300 text-small">
-<li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <strong class="text-white">Les formations</strong> propos&eacute;es par le CEJEF</li>
+<ul class="space-y-1.5 text-slate-300 text-small">
+<li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <strong class="text-white">Les formations</strong> propos&eacute;es</li>
 <li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <strong class="text-white">L'orientation</strong> des futurs &eacute;l&egrave;ves</li>
-<li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <strong class="text-white">L'inscription</strong> et les informations pratiques</li>
+<li class="flex items-center gap-2"><svg class="w-4 h-4 text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> <strong class="text-white">L'inscription</strong> et infos pratiques</li>
+</ul>
+</div>
+<div class="bg-red-500/8 border border-red-500/25 p-4 rounded-xl">
+<h3 class="text-red-400 font-semibold text-body mb-2 flex items-center gap-2">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+Le site n'est pas&hellip;
+</h3>
+<ul class="space-y-1.5 text-slate-300 text-small">
+<li class="flex items-center gap-2"><svg class="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg> Un <strong class="text-white">portail interne</strong> collaborateurs</li>
+<li class="flex items-center gap-2"><svg class="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg> Un <strong class="text-white">espace pour les &eacute;l&egrave;ves</strong> inscrits</li>
+<li class="flex items-center gap-2"><svg class="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg> Une <strong class="text-white">vitrine institutionnelle</strong> exhaustive</li>
 </ul>
 </div>
 </div>
 
-<div class="grid grid-cols-3 gap-4 fade-up d3">
-<div class="card bg-slate-800/60 p-4 rounded-xl border border-slate-700/40 text-center">
-<div class="text-title text-blue-400 mb-1">14&ndash;16 ans</div>
+<div class="grid grid-cols-2 gap-4 mb-4 fade-up d3">
+<div class="bg-gradient-to-br from-blue-500/10 to-transparent border border-blue-500/25 p-3.5 rounded-xl flex items-start gap-3">
+<div class="w-9 h-9 bg-blue-500/20 rounded-lg flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+<div>
+<p class="text-blue-400 font-semibold text-xs mb-0.5">Communication interne &mdash; d&eacute;j&agrave; couverte</p>
+<p class="text-xs text-slate-300">Choix d&eacute;j&agrave; &eacute;tabli : <strong class="text-white">SharePoint</strong> (r&eacute;f&eacute;rentiel) + <strong class="text-white">Teams</strong> (collaboration). Pas de doublon sur le site public.</p>
+</div>
+</div>
+<div class="bg-gradient-to-br from-amber-500/10 to-transparent border border-amber-500/25 p-3.5 rounded-xl flex items-start gap-3">
+<div class="w-9 h-9 bg-amber-500/20 rounded-lg flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg></div>
+<div>
+<p class="text-amber-400 font-semibold text-xs mb-0.5">Vitrine institutionnelle &mdash; &eacute;cart&eacute;e</p>
+<p class="text-xs text-slate-300">Le site aide &agrave; <strong class="text-white">choisir une formation</strong> et &agrave; <strong class="text-white">s'inscrire</strong>. Il n'a pas vocation &agrave; pr&eacute;senter toute l'institution dans le d&eacute;tail.</p>
+</div>
+</div>
+</div>
+
+<div class="grid grid-cols-3 gap-4 fade-up d4">
+<div class="card bg-slate-800/60 p-3 rounded-xl border border-slate-700/40 text-center">
+<div class="text-title text-blue-400 mb-1">12&ndash;16 ans</div>
 <p class="text-xs text-slate-400">Public habitu&eacute; aux apps, exigeant en rapidit&eacute;</p>
 </div>
-<div class="card bg-slate-800/60 p-4 rounded-xl border border-slate-700/40 text-center">
+<div class="card bg-slate-800/60 p-3 rounded-xl border border-slate-700/40 text-center">
 <div class="text-title text-green-400 mb-1">2 clics</div>
 <p class="text-xs text-slate-400">Objectif : acc&eacute;der &agrave; n'importe quelle formation</p>
 </div>
-<div class="card bg-slate-800/60 p-4 rounded-xl border border-slate-700/40 text-center">
+<div class="card bg-slate-800/60 p-3 rounded-xl border border-slate-700/40 text-center">
 <div class="text-title text-amber-400 mb-1">1 structure</div>
 <p class="text-xs text-slate-400">M&ecirc;me mise en page pour toutes les divisions</p>
 </div>
@@ -294,8 +326,48 @@ Le site se concentre sur&hellip;
 </div>
 </section>
 
-<!-- ============================== SLIDE 3 : QUI FAIT QUOI ============================== -->
+<!-- ============================== SLIDE 3 : PUBLICS CIBLES ============================== -->
 <section class="slide" id="s3">
+<div class="content">
+<h2 class="text-title gradient-text text-center mb-6 fade-up">Publics cibles</h2>
+
+<div class="mb-5 fade-up d1">
+<p class="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-3">Publics primaires</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="card bg-slate-800/60 p-5 rounded-xl border border-blue-500/30">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg></div>
+<p class="text-blue-400 font-semibold text-body">&Eacute;l&egrave;ves du secondaire I</p>
+</div>
+<p class="text-xs text-slate-400 mb-2">12&ndash;16 ans &mdash; cycle d'orientation</p>
+<p class="text-small text-slate-300">Choisissent leur voie post-obligatoire : <strong class="text-white">CFC dual</strong>, <strong class="text-white">CFC en &eacute;cole</strong> (ex. EMT) ou <strong class="text-white">formation en &eacute;cole</strong> (ECG, maturit&eacute;).</p>
+</div>
+<div class="card bg-slate-800/60 p-5 rounded-xl border border-green-500/30">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 bg-green-500/20 rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+<p class="text-green-400 font-semibold text-body">Parents</p>
+</div>
+<p class="text-xs text-slate-400 mb-2">Tr&egrave;s impliqu&eacute;s dans le choix d'orientation</p>
+<p class="text-small text-slate-300">Comparent les voies, les d&eacute;bouch&eacute;s, les conditions pratiques. Recherchent <strong class="text-white">clart&eacute;</strong> et <strong class="text-white">rep&egrave;res concrets</strong>.</p>
+</div>
+</div>
+</div>
+
+<div class="fade-up d2">
+<p class="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-3">Public secondaire</p>
+<div class="bg-slate-800/40 border border-amber-500/20 p-4 rounded-xl flex items-start gap-3">
+<div class="w-9 h-9 bg-amber-500/20 rounded-lg flex items-center justify-center shrink-0"><svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg></div>
+<div>
+<p class="text-amber-400 font-semibold text-small mb-1">Personnes en recherche de formation post-CFC</p>
+<p class="text-xs text-slate-300">Ex : <strong class="text-white">maturit&eacute; professionnelle</strong>, <strong class="text-white">&eacute;cole sup&eacute;rieure (ES)</strong>. Effectif plus restreint &mdash; la majorit&eacute; re&ccedil;oit les offres de formations <strong class="text-white">directement durant leur formation au CEJEF</strong>. Le site reste accessible, mais n'est pas leur canal principal.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ============================== SLIDE 4 : QUI FAIT QUOI ============================== -->
+<section class="slide" id="s4">
 <div class="content">
 <h2 class="text-title gradient-text text-center mb-5 fade-up">Qui fait quoi ?</h2>
 
@@ -360,7 +432,7 @@ Le site se concentre sur&hellip;
 <div class="w-8 h-8 bg-purple-500/20 rounded-lg flex items-center justify-center shrink-0"><svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
 <div>
 <p class="text-purple-400 font-semibold text-xs">Interface Directus</p>
-<p class="text-slate-400 text-xs">Interface web intuitive &mdash; aucune comp&eacute;tence technique n&eacute;cessaire</p>
+<p class="text-slate-400 text-xs">Interface web simple d'usage &mdash; une <strong class="text-slate-300">formation</strong> sera organis&eacute;e par le CNS</p>
 </div>
 </div>
 <div class="bg-gradient-to-r from-blue-500/8 to-transparent border border-blue-500/20 rounded-xl p-3.5 flex items-start gap-3">
@@ -374,117 +446,117 @@ Le site se concentre sur&hellip;
 </div>
 </section>
 
-<!-- ============================== SLIDE 4 : À DÉFINIR — ÉCOLE ============================== -->
-<section class="slide" id="s4">
-<div class="content">
-<div class="text-center mb-2 fade-up">
-<span class="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider">&Agrave; d&eacute;finir avec vous</span>
-</div>
-<h2 class="text-title gradient-text text-center mb-4 fade-up d1">Pr&eacute;sentation de la division / &eacute;cole</h2>
-
-<div class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 p-5 rounded-2xl border border-slate-700/40 mb-5 fade-up d1">
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 bg-amber-500/20 rounded-lg flex items-center justify-center shrink-0 mt-0.5">
-<svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-</div>
-<div>
-<p class="text-body text-white font-semibold mb-2">Faut-il conserver une section de pr&eacute;sentation ?</p>
-<p class="text-small text-slate-300 leading-relaxed">Notre analyse UX montre que les visiteurs viennent chercher une <strong class="text-blue-400">formation</strong>, pas des informations sur l'institution. La question est donc : <strong class="text-white">se concentrer sur l'offre de formation</strong> est-il la bonne approche ?</p>
-<p class="text-xs text-slate-400 mt-2">Il est possible que nous ayons manqu&eacute; un &eacute;l&eacute;ment important &mdash; c'est pourquoi nous vous posons la question.</p>
-</div>
-</div>
-</div>
-
-<div class="grid grid-cols-2 gap-5">
-<div class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 p-5 rounded-2xl border border-slate-700/40 fade-up d2">
-<div class="flex items-center gap-3 mb-4">
-<div class="w-9 h-9 bg-amber-500/20 rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
-<h3 class="text-white font-semibold text-body">Questions &agrave; valider</h3>
-</div>
-<div class="space-y-2.5">
-<div class="bg-slate-700/25 p-3 rounded-lg"><p class="text-amber-400 font-semibold text-xs mb-1">Section n&eacute;cessaire ?</p><p class="text-slate-300 text-xs">Est-il n&eacute;cessaire de conserver une pr&eacute;sentation de la division et des &eacute;coles sur le site ?</p></div>
-<div class="bg-slate-700/25 p-3 rounded-lg"><p class="text-amber-400 font-semibold text-xs mb-1">Si oui, quelle forme ?</p><p class="text-slate-300 text-xs">Texte descriptif, chiffres cl&eacute;s, vid&eacute;o, galerie photo ?</p></div>
-<div class="bg-slate-700/25 p-3 rounded-lg"><p class="text-amber-400 font-semibold text-xs mb-1">Si oui, quel emplacement ?</p><p class="text-slate-300 text-xs">En haut de page (premier &eacute;l&eacute;ment) ou plus bas apr&egrave;s les formations ?</p></div>
-</div>
-</div>
-
-<div class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 p-5 rounded-2xl border border-slate-700/40 fade-up d3">
-<div class="flex items-center gap-3 mb-4">
-<div class="w-9 h-9 bg-blue-500/20 rounded-lg flex items-center justify-center"><svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
-<h3 class="text-white font-semibold text-body">Ce que dit l'analyse UX</h3>
-</div>
-<div class="space-y-2.5">
-<div class="bg-red-500/5 border border-red-500/15 p-3 rounded-lg">
-<p class="text-red-400 font-semibold text-xs">Les visiteurs ne cherchent pas cette info</p>
-<p class="text-slate-400 text-xs mt-0.5">Ils viennent pour trouver une formation, pas pour d&eacute;couvrir l'histoire de l'&eacute;cole</p>
-</div>
-<div class="bg-green-500/5 border border-green-500/15 p-3 rounded-lg">
-<p class="text-green-400 font-semibold text-xs">Approche recommand&eacute;e</p>
-<p class="text-slate-400 text-xs mt-0.5">Se concentrer sur les besoins en formation et l'offre propos&eacute;e</p>
-</div>
-<div class="bg-amber-500/5 border border-amber-500/15 p-3 rounded-lg">
-<p class="text-amber-400 font-semibold text-xs">Votre avis compte</p>
-<p class="text-slate-400 text-xs mt-0.5">Vous connaissez votre public &mdash; y a-t-il un besoin que nous n'avons pas identifi&eacute; ?</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- ============================== SLIDE 5 : À DÉFINIR — CAMPUS ============================== -->
+<!-- ============================== SLIDE 5 : À DÉFINIR — ÉCOLE ============================== -->
 <section class="slide" id="s5">
 <div class="content">
 <div class="text-center mb-2 fade-up">
-<span class="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider">&Agrave; d&eacute;finir avec vous</span>
+<span class="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider">&Agrave; valider avec vous</span>
 </div>
-<h2 class="text-title gradient-text text-center mb-4 fade-up d1">Section &laquo; Campus &raquo;</h2>
+<h2 class="text-title gradient-text text-center mb-4 fade-up d1">Pr&eacute;sentation de la division / &eacute;cole</h2>
 
-<div class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 p-4 rounded-2xl mb-4 border border-slate-700/40 text-center fade-up d1">
-<p class="text-small text-slate-300">Permettre aux futurs &eacute;l&egrave;ves de <strong class="text-white">se projeter</strong> dans leur futur cadre d'&eacute;tude.</p>
-<p class="text-xs text-slate-400 mt-1">Objectif : montrer ce qui diff&eacute;rencie votre campus &mdash; pas un annuaire de services internes.</p>
-</div>
-
-<div class="grid grid-cols-2 gap-5">
-<div class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 p-5 rounded-2xl border border-slate-700/40 fade-up d2">
-<p class="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-3">Id&eacute;es de contenu</p>
-<div class="space-y-2">
-<div class="flex items-center gap-3 bg-slate-700/25 p-2.5 rounded-lg"><svg class="w-4 h-4 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg><span class="text-slate-200 text-xs">Infrastructures (ateliers, labos, salles sp&eacute;cialis&eacute;es)</span></div>
-<div class="flex items-center gap-3 bg-slate-700/25 p-2.5 rounded-lg"><svg class="w-4 h-4 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="text-slate-200 text-xs">Photos / vid&eacute;o du cadre d'&eacute;tude</span></div>
-<div class="flex items-center gap-3 bg-slate-700/25 p-2.5 rounded-lg"><svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg><span class="text-slate-200 text-xs">&Eacute;quipements sp&eacute;cifiques &agrave; la division</span></div>
-<div class="flex items-center gap-3 bg-slate-700/25 p-2.5 rounded-lg"><svg class="w-4 h-4 text-green-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span class="text-slate-200 text-xs">Vie quotidienne (journ&eacute;e type, rythme scolaire)</span></div>
-<div class="flex items-center gap-3 bg-slate-700/25 p-2.5 rounded-lg"><svg class="w-4 h-4 text-cyan-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span class="text-slate-200 text-xs">Projets &eacute;l&egrave;ves / r&eacute;alisations concr&egrave;tes</span></div>
-<div class="flex items-center gap-3 bg-amber-500/10 border border-amber-500/20 p-2.5 rounded-lg"><svg class="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><span class="text-amber-400 text-xs">Localisation et acc&egrave;s <span class="text-slate-500">&mdash; pertinence &agrave; confirmer</span></span></div>
-</div>
+<div class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 p-4 rounded-2xl border border-slate-700/40 mb-4 fade-up d1 text-center">
+<p class="text-small text-slate-300">Trois options dimensionn&eacute;es. Recommandation CNS : <strong class="text-green-400">option B</strong>.</p>
 </div>
 
-<div class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 p-5 rounded-2xl border border-slate-700/40 fade-up d3">
-<p class="text-xs font-semibold text-amber-400 uppercase tracking-wider mb-3">Dans la maquette actuelle</p>
-<div class="bg-slate-700/25 p-3.5 rounded-lg mb-3">
-<p class="text-slate-300 text-xs mb-2">La section campus pr&eacute;sente des <strong class="text-white">ic&ocirc;nes de services</strong> :</p>
-<div class="flex flex-wrap gap-2">
-<span class="text-xs bg-slate-600/30 px-2 py-1 rounded">M&eacute;diath&egrave;que</span>
-<span class="text-xs bg-slate-600/30 px-2 py-1 rounded">Espaces de travail</span>
-<span class="text-xs bg-slate-600/30 px-2 py-1 rounded">Caf&eacute;t&eacute;ria</span>
-<span class="text-xs bg-slate-600/30 px-2 py-1 rounded">WiFi</span>
-<span class="text-xs bg-slate-600/30 px-2 py-1 rounded">Acc&egrave;s / stationnement</span>
+<div class="grid grid-cols-3 gap-4 mb-4">
+<div class="bg-slate-800/60 border border-slate-700/40 p-4 rounded-2xl fade-up d2">
+<div class="flex items-center gap-2 mb-3">
+<span class="w-8 h-8 bg-slate-600/40 rounded-lg flex items-center justify-center text-small font-bold text-slate-300">A</span>
+<p class="text-white font-semibold text-small">Aucune</p>
+</div>
+<p class="text-xs text-slate-300 mb-3">Pas de section pr&eacute;sentation</p>
+<div class="space-y-1.5 text-xs">
+<p><span class="text-slate-500">Forme :</span> <span class="text-slate-300">&mdash;</span></p>
+<p><span class="text-slate-500">Emplacement :</span> <span class="text-slate-300">&mdash;</span></p>
+<p><span class="text-slate-500">Co&ucirc;t :</span> <span class="text-slate-300">0</span></p>
+</div>
+<p class="text-xs text-slate-400 mt-3 italic">Conforme analyse UX pure</p>
+</div>
+
+<div class="bg-gradient-to-br from-green-500/15 to-transparent border-2 border-green-500/40 p-4 rounded-2xl fade-up d3 relative">
+<span class="absolute -top-2 right-3 bg-green-500 text-slate-900 text-xs font-bold px-2 py-0.5 rounded">Recommand&eacute;e</span>
+<div class="flex items-center gap-2 mb-3">
+<span class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center text-small font-bold text-white">B</span>
+<p class="text-green-400 font-semibold text-small">Bloc condens&eacute;</p>
+</div>
+<p class="text-xs text-slate-300 mb-3">3-4 chiffres cl&eacute;s + 2 phrases + ISO 9001</p>
+<div class="space-y-1.5 text-xs">
+<p><span class="text-slate-500">Forme :</span> <span class="text-slate-200">Bloc compact</span></p>
+<p><span class="text-slate-500">Emplacement :</span> <span class="text-slate-200">Bas de page, avant contacts</span></p>
+<p><span class="text-slate-500">Co&ucirc;t :</span> <span class="text-slate-200">Faible</span></p>
+</div>
+<p class="text-xs text-green-400 mt-3 italic font-semibold">Compromis UX / institutionnel</p>
+</div>
+
+<div class="bg-slate-800/60 border border-slate-700/40 p-4 rounded-2xl fade-up d4">
+<div class="flex items-center gap-2 mb-3">
+<span class="w-8 h-8 bg-purple-500/40 rounded-lg flex items-center justify-center text-small font-bold text-purple-300">C</span>
+<p class="text-purple-400 font-semibold text-small">Section d&eacute;di&eacute;e</p>
+</div>
+<p class="text-xs text-slate-300 mb-3">Texte + photos + vid&eacute;o + galerie</p>
+<div class="space-y-1.5 text-xs">
+<p><span class="text-slate-500">Forme :</span> <span class="text-slate-300">Section compl&egrave;te</span></p>
+<p><span class="text-slate-500">Emplacement :</span> <span class="text-slate-300">Haut ou milieu de page</span></p>
+<p><span class="text-slate-500">Co&ucirc;t :</span> <span class="text-slate-300">&Eacute;lev&eacute;</span></p>
+</div>
+<p class="text-xs text-slate-400 mt-3 italic">Si justification forte</p>
 </div>
 </div>
-<p class="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-2 mt-3">Formes de pr&eacute;sentation possibles</p>
-<div class="flex flex-wrap gap-2">
-<span class="text-xs bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Photos / galerie</span>
-<span class="text-xs bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Slider / carrousel</span>
-<span class="text-xs bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Ic&ocirc;nes + texte</span>
-<span class="text-xs bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Vid&eacute;o</span>
-<span class="text-xs bg-blue-500/10 border border-blue-500/20 px-2 py-1 rounded">Visite virtuelle</span>
-</div>
-</div>
+
+<div class="bg-amber-500/10 border border-amber-500/25 p-4 rounded-2xl fade-up d4 text-center">
+<p class="text-amber-400 font-semibold text-small">Question &agrave; valider</p>
+<p class="text-small text-slate-200 mt-1">Option <strong class="text-green-400">B</strong> confirm&eacute;e, ou justification pour <strong>A</strong> / <strong>C</strong> ?</p>
 </div>
 </div>
 </section>
 
-<!-- ============================== SLIDE 6 : CONTACTS & RÉSEAUX ============================== -->
+<!-- ============================== SLIDE 6 : À DÉFINIR — CAMPUS ============================== -->
 <section class="slide" id="s6">
+<div class="content">
+<div class="text-center mb-2 fade-up">
+<span class="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider">&Agrave; d&eacute;finir avec vous</span>
+</div>
+<h2 class="text-title gradient-text text-center mb-5 fade-up d1">Section &laquo; Campus &raquo;</h2>
+
+<div class="grid grid-cols-2 gap-5 mb-4">
+<div class="bg-gradient-to-br from-blue-500/10 to-transparent border border-blue-500/25 p-5 rounded-2xl fade-up d2">
+<div class="flex items-center gap-3 mb-3">
+<span class="w-9 h-9 bg-blue-500/30 rounded-lg flex items-center justify-center text-blue-400 font-bold">1</span>
+<h3 class="text-blue-400 font-semibold text-body">Direction minimale</h3>
+</div>
+<p class="text-small text-slate-300 mb-3">4-6 photos + courte l&eacute;gende</p>
+<div class="space-y-1.5">
+<div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-200 text-xs">Cadre d'&eacute;tude</span></div>
+<div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-200 text-xs">Ateliers et infrastructures</span></div>
+<div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-200 text-xs">Projets &eacute;l&egrave;ves</span></div>
+</div>
+<p class="text-xs text-blue-300 mt-3 italic">Co&ucirc;t faible &mdash; d&eacute;lai court</p>
+</div>
+
+<div class="bg-gradient-to-br from-purple-500/10 to-transparent border border-purple-500/25 p-5 rounded-2xl fade-up d3">
+<div class="flex items-center gap-3 mb-3">
+<span class="w-9 h-9 bg-purple-500/30 rounded-lg flex items-center justify-center text-purple-400 font-bold">2</span>
+<h3 class="text-purple-400 font-semibold text-body">Direction ambitieuse</h3>
+</div>
+<p class="text-small text-slate-300 mb-3">Vid&eacute;o courte (1&ndash;2 min) + photos + t&eacute;moignages</p>
+<div class="space-y-1.5">
+<div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg><span class="text-slate-200 text-xs">Vid&eacute;o de pr&eacute;sentation</span></div>
+<div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="text-slate-200 text-xs">Photos haute qualit&eacute;</span></div>
+<div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-purple-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg><span class="text-slate-200 text-xs">2&ndash;3 t&eacute;moignages &eacute;l&egrave;ves film&eacute;s</span></div>
+</div>
+<p class="text-xs text-purple-300 mt-3 italic">Co&ucirc;t &eacute;lev&eacute; &mdash; engagement de production</p>
+</div>
+</div>
+
+<div class="bg-amber-500/10 border border-amber-500/25 p-4 rounded-2xl fade-up d4 text-center">
+<p class="text-amber-400 font-semibold text-small">Demande aux divisions</p>
+<p class="text-small text-slate-200 mt-1">Choisir <strong class="text-blue-400">minimale</strong> ou <strong class="text-purple-400">ambitieuse</strong> &mdash; et s'engager &agrave; <strong class="text-white">fournir les contenus</strong> (photos, vid&eacute;os, t&eacute;moignages).</p>
+</div>
+</div>
+</section>
+
+<!-- ============================== SLIDE 7 : CONTACTS & RÉSEAUX ============================== -->
+<section class="slide" id="s7">
 <div class="content">
 <div class="text-center mb-2 fade-up">
 <span class="inline-block px-3 py-1 bg-amber-500/10 border border-amber-500/20 rounded-full text-amber-400 text-xs font-semibold uppercase tracking-wider">&Agrave; d&eacute;finir avec vous</span>
@@ -529,6 +601,7 @@ Le site se concentre sur&hellip;
 <div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><span class="text-slate-200 text-xs">Facebook</span></div>
 <div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><span class="text-slate-200 text-xs">LinkedIn</span></div>
 <div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><span class="text-slate-200 text-xs">YouTube</span></div>
+<div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><span class="text-slate-200 text-xs">TikTok</span></div>
 <div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><span class="text-slate-200 text-xs">Autre ?</span></div>
 </div>
 </div>
@@ -536,8 +609,8 @@ Le site se concentre sur&hellip;
 </div>
 </section>
 
-<!-- ============================== SLIDE 7 : MODÈLES DE FORMATION ============================== -->
-<section class="slide" id="s7">
+<!-- ============================== SLIDE 8 : MODÈLES DE FORMATION ============================== -->
+<section class="slide" id="s8">
 <div class="content">
 <h2 class="text-title gradient-text text-center mb-4 fade-up">Mod&egrave;les de pages de formation</h2>
 
@@ -553,8 +626,11 @@ Le site se concentre sur&hellip;
 </div>
 <div class="space-y-1.5">
 <div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-200 text-xs">Pr&eacute;sentation visuelle (image, description)</span></div>
+<div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-200 text-xs">Infos cl&eacute;s du choix : <strong class="text-white">modalit&eacute;</strong> (en &eacute;cole / en entreprise / dual), <strong class="text-white">dur&eacute;e</strong>, <strong class="text-white">dipl&ocirc;me</strong> d&eacute;livr&eacute;</span></div>
+<div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-200 text-xs"><strong class="text-white">Chiffres cl&eacute;s</strong> (places disponibles, d&eacute;bouch&eacute;s concrets)</span></div>
 <div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-200 text-xs">Parcours de formation (ann&eacute;e par ann&eacute;e)</span></div>
-<div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-200 text-xs">Conditions d'admission</span></div>
+<div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-200 text-xs">Conditions d'admission &amp; <strong class="text-white">d&eacute;bouch&eacute;s</strong></span></div>
+<div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-200 text-xs"><strong class="text-white">T&eacute;moignages</strong> d'&eacute;l&egrave;ves ou d'anciens (avec photo + parcours)</span></div>
 <div class="flex items-center gap-2 bg-slate-700/25 p-2 rounded-lg"><svg class="w-3.5 h-3.5 text-blue-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg><span class="text-slate-200 text-xs">Infos pratiques (lieu, contact, inscription)</span></div>
 </div>
 </div>
@@ -575,8 +651,8 @@ Le site se concentre sur&hellip;
 </div>
 </section>
 
-<!-- ============================== SLIDE 8 : INSCRIPTION ============================== -->
-<section class="slide" id="s8">
+<!-- ============================== SLIDE 9 : INSCRIPTION ============================== -->
+<section class="slide" id="s9">
 <div class="content">
 <h2 class="text-title gradient-text text-center mb-8 fade-up">Syst&egrave;me d'inscription</h2>
 
@@ -632,8 +708,8 @@ Le site se concentre sur&hellip;
 </div>
 </section>
 
-<!-- ============================== SLIDE 9 : PROCHAINES ÉTAPES ============================== -->
-<section class="slide" id="s9">
+<!-- ============================== SLIDE 10 : VOS TÂCHES ============================== -->
+<section class="slide" id="s10">
 <div class="blob w-[28vw] h-[28vw] bg-green-500/8 -top-[8vw] -right-[8vw] absolute"></div>
 <div class="blob w-[22vw] h-[22vw] bg-blue-500/8 -bottom-[6vw] -left-[6vw] absolute"></div>
 
@@ -642,8 +718,8 @@ Le site se concentre sur&hellip;
 
 <div class="bg-gradient-to-br from-slate-800/80 to-slate-800/40 p-5 rounded-2xl mb-5 border border-slate-700/40 glow fade-up d1">
 <div class="grid grid-cols-2 gap-4">
-<div class="flex items-center gap-3 bg-slate-700/25 p-3.5 rounded-lg"><span class="w-7 h-7 bg-amber-500/20 rounded-full flex items-center justify-center text-xs text-amber-400 font-bold shrink-0">1</span><span class="text-slate-200 text-xs">Valider le besoin d'une section de pr&eacute;sentation &eacute;cole</span></div>
-<div class="flex items-center gap-3 bg-slate-700/25 p-3.5 rounded-lg"><span class="w-7 h-7 bg-amber-500/20 rounded-full flex items-center justify-center text-xs text-amber-400 font-bold shrink-0">2</span><span class="text-slate-200 text-xs">D&eacute;finir les contenus de la section campus</span></div>
+<div class="flex items-center gap-3 bg-slate-700/25 p-3.5 rounded-lg"><span class="w-7 h-7 bg-amber-500/20 rounded-full flex items-center justify-center text-xs text-amber-400 font-bold shrink-0">1</span><span class="text-slate-200 text-xs">Confirmer l'option B (bloc condens&eacute;) pour la pr&eacute;sentation &eacute;cole, ou justifier A / C</span></div>
+<div class="flex items-center gap-3 bg-slate-700/25 p-3.5 rounded-lg"><span class="w-7 h-7 bg-amber-500/20 rounded-full flex items-center justify-center text-xs text-amber-400 font-bold shrink-0">2</span><span class="text-slate-200 text-xs">Choisir Campus minimale ou ambitieuse, et fournir photos / vid&eacute;os</span></div>
 <div class="flex items-center gap-3 bg-slate-700/25 p-3.5 rounded-lg"><span class="w-7 h-7 bg-amber-500/20 rounded-full flex items-center justify-center text-xs text-amber-400 font-bold shrink-0">3</span><span class="text-slate-200 text-xs">Choisir le type de contacts et les personnes &agrave; afficher</span></div>
 <div class="flex items-center gap-3 bg-slate-700/25 p-3.5 rounded-lg"><span class="w-7 h-7 bg-amber-500/20 rounded-full flex items-center justify-center text-xs text-amber-400 font-bold shrink-0">4</span><span class="text-slate-200 text-xs">Transmettre les liens de vos r&eacute;seaux sociaux</span></div>
 <div class="flex items-center gap-3 bg-slate-700/25 p-3.5 rounded-lg"><span class="w-7 h-7 bg-amber-500/20 rounded-full flex items-center justify-center text-xs text-amber-400 font-bold shrink-0">5</span><span class="text-slate-200 text-xs">D&eacute;signer un responsable pour les pages de formation</span></div>
@@ -668,6 +744,8 @@ Le site se concentre sur&hellip;
 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
 <span>Centre Num&eacute;rique</span>
 </div>
+<span class="text-slate-700">&bull;</span>
+<span class="text-slate-600 font-mono text-xs">v1.0.0</span>
 </div>
 </div>
 </section>
